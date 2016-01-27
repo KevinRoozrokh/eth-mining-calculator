@@ -128,34 +128,34 @@
             
             //res.month = res.day * 30;
             res.month = 0;
-            var dayinc = Math.pow(1.05,1/30);
+            var dayinc = Math.pow(1 + diff,1/30);
             for (var i = 0; i < 30; i++)
                 res.month += res.day / Math.pow(dayinc, i);           
             
             res.year = 0;
             for (var i = 0; i < 12; i++)
-                res.year += res.month / Math.pow(1.05, i);
+                res.year += res.month / Math.pow(1 + diff, i);
             
             return res;
         })(userCurrencyPerMin, network.hashrateIncrement);
         
         // estimate the generated monthly given an expected difficulty increase
-        var predictedRev = (function(min, network){
+        var predictedRev = (function(min, diff){
             var res = [];
             
             var mo = 0;
             var dd = min * 60 * 24;
-            var dayinc = Math.pow(1.05,1/30);
+            var dayinc = Math.pow(1 + diff, 1/30);
             for (var i = 0; i < 30; i++)
                 mo += dd / Math.pow(dayinc, i);           
                        
             for (var i = 0; i < 12; i++)
             {
-                res[i] = mo / Math.pow(1.05, i);
+                res[i] = mo / Math.pow(1 + diff, i);
             }
             
             return res;
-        })(userCurrencyPerMin, network);
+        })(userCurrencyPerMin, network.hashrateIncrement);
         
         var sumArray = function(arr){ var total = 0.0; for (var i = 0; i < arr.length; i++) total += arr[i]; return total;};				
         
