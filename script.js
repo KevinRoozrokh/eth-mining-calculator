@@ -1,15 +1,15 @@
 
     var data = [
         'Custom,20,200,200',
-        'Radeon HD 7990,50,375,532.00',
-        'Radeon HD 7950,20,200,160.00',
-        'Radeon HD 7970,24,250,213.00',
-        'Radeon R9 280X,25,250,240.00',
-        'Radeon R9 270X,18,180,188.00',
-        'Radeon R9 270,14.2,150,157.00',
-        'Radeon R9 290X,25.46,290,300.00',
-        'Radeon R9 380 X,20,190,320.00',
-        'Radeon R9 295X2,51,500,804.00',
+        'Radeon HD 7990,50,375,589,443,http://www.amazon.com/s/ref=sr_nr_n_0?fst=as%3Aoff&rh=n%3A172282%2Cn%3A541966%2Cn%3A284822%2Ck%3ARadeon+HD+7990&keywords=Radeon+HD+7990&ie=UTF8&tag=0596007124-20&qid=1453887867&rnid=493964',
+        'Radeon HD 7950,20,200,295,119,http://www.amazon.com/s/ref=sr_nr_n_0?fst=as%3Aoff&rh=n%3A172282%2Cn%3A541966%2Cn%3A284822%2Ck%3ARadeon+HD+7950&keywords=Radeon+HD+7950&ie=UTF8&tag=0596007124-20&qid=1453887867&rnid=493964',
+        'Radeon HD 7970,24,250,345,119,http://www.amazon.com/s/ref=sr_nr_n_0?fst=as%3Aoff&rh=n%3A172282%2Cn%3A541966%2Cn%3A284822%2Ck%3ARadeon+HD+7970&keywords=Radeon+HD+7970&ie=UTF8&tag=0596007124-20&qid=1453887867&rnid=493964',
+        'Radeon R9 280X,25,250,194,150,http://www.amazon.com/s/ref=sr_nr_n_0?fst=as%3Aoff&rh=n%3A172282%2Cn%3A541966%2Cn%3A284822%2Ck%3ARadeon+R9+280X&keywords=Radeon+R9+280X&ie=UTF8&tag=0596007124-20&qid=1453887867&rnid=493964',
+        'Radeon R9 270X,18,180,199,130,http://www.amazon.com/s/ref=sr_nr_n_0?fst=as%3Aoff&rh=n%3A172282%2Cn%3A541966%2Cn%3A284822%2Ck%3ARadeon+R9+270X&keywords=Radeon+R9+270X&ie=UTF8&tag=0596007124-20&qid=1453887867&rnid=493964',
+        'Radeon R9 270,14.2,150,168,126,http://www.amazon.com/s/ref=sr_nr_n_0?fst=as%3Aoff&rh=n%3A172282%2Cn%3A541966%2Cn%3A284822%2Ck%3ARadeon+R9+270&keywords=Radeon+R9+270&ie=UTF8&tag=0596007124-20&qid=1453887867&rnid=493964',
+        'Radeon R9 290X,25.46,290,371,225,http://www.amazon.com/s/ref=sr_nr_n_0?fst=as%3Aoff&rh=n%3A172282%2Cn%3A541966%2Cn%3A284822%2Ck%3ARadeon+R9+290X&keywords=Radeon+R9+290X&ie=UTF8&tag=0596007124-20&qid=1453887867&rnid=493964',
+        'Radeon R9 380 X,20,190,229,229,http://www.amazon.com/s/ref=sr_nr_n_0?fst=as%3Aoff&rh=n%3A172282%2Cn%3A541966%2Cn%3A284822%2Ck%3ARadeon+R9+380X&keywords=Radeon+R9+380X&ie=UTF8&tag=0596007124-20&qid=1453887867&rnid=493964',
+        'Radeon R9 295X2,51,500,804',
         'Radeon HD 7950 Boost,16,225,160.00',
         'Radeon R9 390x,27,220,500.00',
         'Radeon HD 7870 XT,13,185,129.00',
@@ -48,13 +48,17 @@
         
         for (var i = 0; i < data.length; i++)
         {
+            var row = data[i].split(',');
+            
             var option = document.createElement('option');
             option.value = i.toString();
-            option.innerHTML = data[i].split(',')[0];
+            option.innerHTML = row[0];
             selected.appendChild(option);
             
-            document.getElementById('checkPriceA').href = 'http://amazon.com';
-            
+//            if (row.length > 5)
+ //               document.getElementById('checkPriceA').href = row[5];
+   //         else
+                document.getElementById('checkPrice').style.display = 'none';           
         }
     }
 
@@ -62,6 +66,18 @@
     {
         document.getElementById('user-hashrate').value = data[selected].split(",")[1];        
         document.getElementById('watts').value         = data[selected].split(",")[2];
+        
+        var row = data[selected].split(',');
+        
+        if (row.length > 5)
+        {
+            document.getElementById('checkPriceA').href = row[5];
+            document.getElementById('checkPrice').style.display = 'inline';   
+        }
+        else
+            document.getElementById('checkPrice').style.display = 'none';           
+        
+        
 
         update();
     }
@@ -124,16 +140,22 @@
         })(userCurrencyPerMin, network.hashrateIncrement);
         
         // estimate the generated monthly given an expected difficulty increase
-        var predictedRev = (function(userhashrate, network){
+        var predictedRev = (function(min, network){
             var res = [];
-                                
+            
+            var mo = 0;
+            var dd = min * 60 * 24;
+            var dayinc = Math.pow(1.05,1/30);
+            for (var i = 0; i < 30; i++)
+                mo += dd / Math.pow(dayinc, i);           
+                       
             for (var i = 0; i < 12; i++)
             {
-                res[i] = calculateUserCurrencyPerMin(userhashrate, network, i) * 60 * 24 * 30;;
+                res[i] = mo / Math.pow(1.05, i);
             }
             
             return res;
-        })(userhashrate, network);
+        })(userCurrencyPerMin, network);
         
         var sumArray = function(arr){ var total = 0.0; for (var i = 0; i < arr.length; i++) total += arr[i]; return total;};				
         
