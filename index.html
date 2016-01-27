@@ -1,118 +1,161 @@
 <!DOCTYPE html>
-<html>
-<head>
-        <title>Eth Mining Calculator</title>
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1">
- 
-        <link rel='stylesheet' href='style.css' type='text/css' media='all' />
-        <style type="text/css">
-            
-        </style>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
 
- 
-        <script type='text/javascript' src='script.js'></script>
-        <script type='text/javascript'>
-                   
-        </script>
- 
- 
-</head>
- 
- 
-<body>
- 
-      
-
-
- 
- 
-    <form action="" method="get">
-
-        <div id="main">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+        <style type="text/css">
+            body{ font-family: 'Noto Sans', sans-serif; }
+            .row{padding-bottom:0.5em;}
+        </style>
+    
+  </head>
+  
+  <body>
+      
+    <div class="container">
+        
+        <div class="row" style="background-color:#fff;">
+            <h1>Ethereum Mining Calculator</h1>
+            <h3>Aiming to be the most advanced Ethereum Mining Calculator</h3>
+        </div>
+        
+        <hr/>
+    
+        <div class="row">
             <h3>Network</h3>
-            <div>
-                <label for="network-hashrate">Network Hashrate:</label>
+        </div>
+        <div class="row">
+            <div class="col-md-3"><label for="network-hashrate">Network Hashrate:</label></div>
+            <div class="col-md-4">
                 <input type="text" name="network-hashrate" id="network-hashrate" value="556" size="20" oninput="update()"/>
                 GHz/s	
             </div>
-            <div>
-                <label for="blocktime">Blocktime:</label>
+            <div class="col-md-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"><label for="blocktime">Blocktime:</label></div>
+            <div class="col-md-4">
                 <input type="text" name="blocktime" id="blocktime" value="17.33" size="20" oninput="update()"/>
                 seconds	
             </div>
-            <div>
-                <label for="networkHasrateIncrement">Hashrate Increment:</label>
+            <div class="col-md-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"><label for="networkHasrateIncrement">Hashrate Increment:</label></div>
+            <div class="col-md-4">
                 <input type="text" name="networkHasrateIncrement" id="networkHasrateIncrement" value="5" size="20"  oninput="update()"/>
                 %/Month
-            </div>        
-            <div>
-                <label for="ethPrice">1 ETH Price:</label>
+            </div>
+            <div class="col-md-5"></div>
+        </div>        
+        <div class="row">
+            <div class="col-md-3"><label for="ethPrice">1 ETH Price:</label></div>
+            <div class="col-md-4">
                 <input type="text" name="ethPrice" id="ethPrice" value="1.39789" size="20"  oninput="update()"/>
                 $
             </div>
+            <div class="col-md-5"></div>
+        </div>   
+
+        <div class="row"><h3>Revenue</h3></div>
+        <div class="row">
             
-    
-            <h3>Revenue</h3>
-            <div>
-                <label for="graphiccard">Card</label>                
-                <select name="graphiccard" id="graphiccard" onchange="selectCard(this.value)">
-                    
-                </select>         
-                <span id="checkPrice"><a href="">Check Price</a></span>       
-            </div>            
-            <div>
-                <label for="user-hashrate">Your Hashrate:</label>
+            <div class="col-md-3"><label for="graphiccard">Card</label></div>                
+            <div class="col-md-4">
+                <select name="graphiccard" id="graphiccard" onchange="selectCard(this.value)"></select>
+                <span id="checkPrice"><a href="" id="checkPriceA">Check Latest Price</a></span>         
+            </div>    
+            <div class="col-md-5"></div> 
+        </div>            
+        <div class="row">
+            <div class="col-md-3"><label for="user-hashrate">Your Hashrate:</label></div>
+            <div class="col-md-4">
                 <input type="text" name="user-hashrate" id="user-hashrate" value="22.5" size="20" oninput="update()"/>
                 MHz/s
             </div>
+            <div class="col-md-5"></div>
+        </div>
 
 
-            <hr/>
-            
-            <h3>Solo/Pool Mining</h3>
-            <div>
-                <label for="watts">Consumption(W/h)</label>
+        
+        
+        <div class="row"><h3>Solo/Pool Mining</h3></div>
+        <div class="row">
+            <div class="col-md-3"><label for="watts">Consumption(W/h)</label></div>
+            <div class="col-md-4">
                 <input type="text" name="watts" id="watts" value="200" size="20" oninput="update()"/>
                 W
             </div>
-            <div>
-                <label for="kwh-price">Price/kwh</label>
+            <div class="col-md-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"><label for="kwh-price">Price/kwh</label></div>
+            <div class="col-md-4">
                 <input type="text" name="kwhPrice" id="kwhPrice" value="0.1" size="20" oninput="update()"/>
                 $/KW
             </div>
-            
-            <h3>Cloud Mining</h3>
-            <div>
-                <label for="consumption">Daily Cost</label>
-                <input type="text" name="dailyUsdPerUnit" id="dailyUsdPerUnit" value="0.06" size="20" oninput="update()"/>
+            <div class="col-md-5"></div>
+        </div>
+        
+        <div class="row"><h3>Cloud Mining</h3></div>
+        <div class="row">
+            <div class="col-md-3"><label for="consumption">Daily Cost</label></div>
+            <div class="col-md-4">
+                <input type="text" name="dailyUsdPerUnit" id="dailyUsdPerUnit" value="0.00" size="20" oninput="update()"/>
                 $/Day/Mhz
             </div>
-            
+            <div class="col-md-5"></div>
+        </div>  
+        
+        
+        <div class="row">
+            <hr/>
         </div>
-		
-		
- 
-    </form>
- 
-    <hr/>
- 
-    <div id="result" style="float:rightt;"></div>
- 
-    <hr/> 
-    <div stlyle="clear:both;"></div>
-    <div>
-        <p>This calculator is based on a simple formula described in this <a href="">thread</a>.</p>  
-        <p>You can get the current network hashrate along with the blocktime from <a href="https://stats.ethdev.com/">here</a>. The average blocktime represents the time in which a new block is generated and for each block 5 ETH are generated. Statistically you will be able to estimate how many ethercoins are generated by you given the fact that you know the whole network computing power. It's your part of the pie. That means for each 17.84 seconds (assuming thats the average time until a new block is generated) you get 5 ETH * 25Mhz / 591.2GHz. But remember this is an average. The estimation should be quite exact for the near future but if you want to estimate for longer term there is much uncertainty regarding how those variables evolve(Average Block Time, Average Network Hashrate).</p>
-        <p>For longer term prediction values are calculated based on anticipated network hashrate considering the evolution for the next 6 month will be similar as the one for the <a href="https://etherscan.io/charts/hashrate">last 6 months</a>.</p>
+        
+        <div class="row" id="result">
+        </div>
+        
+        <div class="row">
+            <p>This calculator is based on a simple formula described in this <a href="https://forum.ethereum.org/discussion/2520/calculating-how-many-blocks-will-be-mined-for-a-given-hashrate">thread</a>.</p>  
+            <p>You can get the current network hashrate along with the blocktime from <a href="https://stats.ethdev.com/">here</a>. The average blocktime represents the time in which a new block is generated and for each block 5 ETH are generated. Statistically you will be able to estimate how many ethercoins are generated by you given the fact that you know the whole network computing power. It's your part of the pie. That means for each 17.84 seconds (assuming thats the average time until a new block is generated) you get 5 ETH * 25Mhz / 591.2GHz. But remember this is an average. The estimation should be quite exact for the near future but if you want to estimate for longer term there is much uncertainty regarding how those variables evolve(Average Block Time, Average Network Hashrate).</p>
+            <p>For longer term prediction values are calculated based on anticipated network hashrate considering the evolution for the next 6 month will be similar as the one for the <a href="https://etherscan.io/charts/hashrate">last 6 months</a>.</p>
+            <p>The processing power of the cards is added from the spreadsheet shared in the thread mentioned above. The consumption is taken from the same place or from <a href="https://en.bitcoin.it/wiki/Non-specialized_hardware_comparison#AMD_.28ATI.29"></a> and the price is manually taken from amazon and neweggs(depending where is cheaper, the links contains affiliate code).</p>
+            <p>If you find this calculator useful and you wish to support it feel free to transfer some eth dimes here:</p>
+        </div>           
+        
     </div>
+      
+    
 
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
+    <script src="script.js"></script>
     <script type='text/javascript'>
         populateHardware(document.getElementById('graphiccard'), data);
         update();
     </script>
-    
- 
-</body>
+  </body>
 </html>
