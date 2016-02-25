@@ -191,7 +191,7 @@
         renderer += '<table class="table table-striped" style="border:1:px;"><thead><tr><td>Month</td><td>Revenue(ETH)</td><td>Revenue(USD)</td><td>Cost(USD)</td></tr></thead>';
         for (var i = 0; i < predictedRev.length; i++)                   
             renderer += '<tr><td>' + i + '</td><td>' + format(predictedRev[i]) + '</td><td>' + format(predictedRev[i] * ethPrice) + '</td><td>' + format(cost.month) + '</td></tr>';
-        renderer += '<tr><td>Total</td><td>' + format(sumArray(predictedRev)) + '</td><td>' + format(sumArray(predictedRev) * ethPrice) + '</td><td>' + format(cost.month) + '</td></tr>';
+        renderer += '<tr><td>Total</td><td>' + format(sumArray(predictedRev)) + '</td><td>' + format(sumArray(predictedRev) * ethPrice) + '</td><td>' + format(12 * cost.month) + '</td></tr>';
         renderer += '</table>';
         
         document.getElementById('result').innerHTML = renderer;
