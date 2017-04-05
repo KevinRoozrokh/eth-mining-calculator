@@ -196,3 +196,37 @@
         
         document.getElementById('result').innerHTML = renderer;
     }
+
+	
+	function loadJSON(path, success, error)
+	{
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function()
+		{
+			if (xhr.readyState === XMLHttpRequest.DONE) {
+				if (xhr.status === 200) {
+					if (success)
+						success(JSON.parse(xhr.responseText));
+				} else {
+					if (error)
+						error(xhr);
+				}
+			}
+		};
+		xhr.open("GET", path, true);
+		xhr.send();
+	}
+
+	loadJSON('https://etherchain.org/api/miningEstimator',
+			function(data) { 
+				document.getElementById('network-hashrate').value = Number(data.data[0].hashRate) / Math.pow(1000, 3);
+				document.getElementById('blocktime').value = data.data[0].blockTime;
+				update();
+			},
+			function(xhr) { console.error(xhr); }
+	);
+	loadJSON('https://api.etherscan.io/api?module=stats&action=ethprice&apikey=YourApiKeyToken',
+			function(data) { document.getElementById('ethPrice').value = data.result.ethusd; update(); },
+			function(xhr) { console.error(xhr); }
+	);	
+
