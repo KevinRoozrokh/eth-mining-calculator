@@ -1,6 +1,9 @@
 
     var data = [
         'Custom,20,200,200',
+	'Radeon RX 480,24,150,170,443,https://www.amazon.com/gp/product/B01M368YOU/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B01M368YOU&linkCode=as2&tag=a35634fc3254df456262365-20&linkId=3e234a37ef2c1c61665f132fc9b97ae1',
+	'Radeon RX 470,25,150,190,443,https://www.amazon.com/gp/product/B01JTNU652/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B01JTNU652&linkCode=as2&tag=a35634fc3254df456262365-20&linkId=adcc0d64b3f49ccf6bbe84ea7b9b6d49',
+	'Radeon R9 Nano,23,175,499,443,https://www.amazon.com/gp/product/B016EWOSLO/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B016EWOSLO&linkCode=as2&tag=a35634fc3254df456262365-20&linkId=0feb761e7a7fa6300d1773b45d4b4522',	
         'Radeon HD 7990,50,375,589,443,http://www.amazon.com/s/ref=sr_nr_n_0?fst=as%3Aoff&rh=n%3A172282%2Cn%3A541966%2Cn%3A284822%2Ck%3ARadeon+HD+7990&keywords=Radeon+HD+7990&ie=UTF8&tag=0596007124-20&qid=1453887867&rnid=493964',
         'Radeon HD 7950,20,200,295,119,http://www.amazon.com/s/ref=sr_nr_n_0?fst=as%3Aoff&rh=n%3A172282%2Cn%3A541966%2Cn%3A284822%2Ck%3ARadeon+HD+7950&keywords=Radeon+HD+7950&ie=UTF8&tag=0596007124-20&qid=1453887867&rnid=493964',
         'Radeon HD 7970,24,250,345,119,http://www.amazon.com/s/ref=sr_nr_n_0?fst=as%3Aoff&rh=n%3A172282%2Cn%3A541966%2Cn%3A284822%2Ck%3ARadeon+HD+7970&keywords=Radeon+HD+7970&ie=UTF8&tag=0596007124-20&qid=1453887867&rnid=493964',
